@@ -62,6 +62,7 @@ public class HuaDongChuangKouDeZuiDaZhiLcof {
         Deque<Integer> deque = new LinkedList<>();
         int[] res = new int[nums.length - k + 1];
         for (int i = 0; i < k; i++) { // 未形成窗口
+            // 这里可以保证队首元素是最大元素
             while (!deque.isEmpty() && deque.peekLast() < nums[i]) {
                 deque.removeLast();
             }
@@ -69,9 +70,11 @@ public class HuaDongChuangKouDeZuiDaZhiLcof {
         }
         res[0] = deque.peekFirst();
         for (int i = k; i < nums.length; i++) { // 形成窗口后
+            // 仅包含窗口内的元素
             if (deque.peekFirst() == nums[i - k]) {
                 deque.removeFirst();
             }
+            // 这里可以保证队首元素是最大元素
             while (!deque.isEmpty() && deque.peekLast() < nums[i]) {
                 deque.removeLast();
             }

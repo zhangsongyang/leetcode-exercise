@@ -55,7 +55,7 @@ public class HuaDongChuangKouDeZuiDaZhiLcof {
         return res;
     }
 
-    public int[] maxSlidingWindowTwo(int[] nums, int k) {
+    public static int[] maxSlidingWindowTwo(int[] nums, int k) {
         if (nums.length == 0 || k == 0) {
             return new int[0];
         }
@@ -88,7 +88,7 @@ public class HuaDongChuangKouDeZuiDaZhiLcof {
     public static void main(String[] args) {
         int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
         int k = 3;
-        int[] res = maxSlidingWindow(nums, k);
+        int[] res = maxSlidingWindowTwo(nums, k);
         for (int re : res) {
             System.out.println(re);
         }

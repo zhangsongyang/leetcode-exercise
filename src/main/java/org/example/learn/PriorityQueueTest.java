@@ -1,5 +1,8 @@
 package org.example.learn;
 
+import org.example.learn.bean.User;
+import org.example.learn.bean.UserComparator;
+
 import java.util.PriorityQueue;
 
 /**
@@ -8,19 +11,16 @@ import java.util.PriorityQueue;
 public class PriorityQueueTest {
 
     public static void main(String[] args) {
-        PriorityQueue<String> priorityQueue = new PriorityQueue<String>();
-        priorityQueue.add("b");
-        priorityQueue.add("11");
-        priorityQueue.add("a");
-        priorityQueue.add("c");
-        priorityQueue.add("1");
-        priorityQueue.offer("-2");
-
-        System.out.println(priorityQueue);
-        System.out.println(priorityQueue.peek());
-        System.out.println(priorityQueue.peek());
-        System.out.println(priorityQueue);
-//        priorityQueue.
+        PriorityQueue<User> q = new PriorityQueue<>(new UserComparator());
+        // 添加3个元素到队列:
+        q.offer(new User("Bob", "A1"));
+        q.offer(new User("Alice", "A2"));
+        q.offer(new User("Boss", "V1"));
+        System.out.println(q.peek());
+        System.out.println(q.poll()); // Boss/V1
+        System.out.println(q.poll()); // Bob/A1
+        System.out.println(q.poll()); // Alice/A2
+        System.out.println(q.poll()); // null,因为队列为空
 
     }
 }

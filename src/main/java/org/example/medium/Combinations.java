@@ -41,6 +41,7 @@ public class Combinations {
         for (int i = begin; i <= n; i++) {
             pre.add(i);
             findCombinations(n, k, i + 1, pre);
+            // 回溯点
             pre.pop();
         }
     }

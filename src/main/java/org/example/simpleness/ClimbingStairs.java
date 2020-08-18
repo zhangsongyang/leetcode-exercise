@@ -2,6 +2,8 @@ package org.example.simpleness;
 
 
 /**
+ * 爬楼梯
+ *
  * 假设你正在爬楼梯。需要 n阶你才能到达楼顶。
  *
  * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
@@ -28,7 +30,7 @@ package org.example.simpleness;
  * 链接：https://leetcode-cn.com/problems/climbing-stairs
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Solution {
+public class ClimbingStairs {
     public int climbStairs(int n) {
         int p = 0, q = 0, r = 1;
         for (int i = 1; i <= n; ++i) {
@@ -50,7 +52,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        ClimbingStairs solution = new ClimbingStairs();
         System.out.println(solution.climbStairs(15));
 
         System.out.println(solution.climbStairsRecursion(15));

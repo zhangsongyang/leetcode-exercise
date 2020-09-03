@@ -66,6 +66,12 @@ public class NAryTreePreorderTraversal {
 
     }
 
+    /**
+     * 迭代写法 其实就是 BFS的思路
+     *
+     * @param root
+     * @return
+     */
     public static List<Integer> preorder(Node root) {
         LinkedList<Node> stack = new LinkedList<>();
         LinkedList<Integer> output = new LinkedList<>();

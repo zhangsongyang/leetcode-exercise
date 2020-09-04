@@ -22,7 +22,7 @@ package org.example.simpleness;
  * 链接：https://leetcode-cn.com/problems/plus-one
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Solution66 {
+public class PlusOne {
 
     public int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
@@ -38,7 +38,7 @@ public class Solution66 {
     }
 
     public static void main(String[] args) {
-        Solution66 solution66 = new Solution66();
+        PlusOne solution66 = new PlusOne();
         int[] digits = {2, 3, 9};
         int[] xx = solution66.plusOne(digits);
         for (int i : xx) {

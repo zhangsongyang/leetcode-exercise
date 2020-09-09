@@ -39,7 +39,7 @@ package org.example.medium;
  */
 public class NumberOfIslands {
 
-    void dfs(char[][] grid, int r, int c) {
+    private void dfs(char[][] grid, int r, int c) {
         int nr = grid.length;
         int nc = grid[0].length;
 

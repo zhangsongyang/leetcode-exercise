@@ -46,6 +46,7 @@ public class ImplementTriePrefixTree {
     static class Trie {
         private boolean isEnd;
         private Trie[] next;
+        private String val;
 
         /**
          * Initialize your data structure here.
@@ -66,10 +67,13 @@ public class ImplementTriePrefixTree {
             char[] words = word.toCharArray();
             for (int i = 0; i < words.length; i++) {
                 int n = words[i] - 'a';
-                if (curr.next[n] == null) curr.next[n] = new Trie();
+                if (curr.next[n] == null) {
+                    curr.next[n] = new Trie();
+                }
                 curr = curr.next[n];
             }
             curr.isEnd = true;
+            curr.val = word;
         }
 
         /**
@@ -77,6 +81,7 @@ public class ImplementTriePrefixTree {
          */
         public boolean search(String word) {
             Trie node = searchPrefix(word);
+            System.out.println("search: " + node.val);
             return node != null && node.isEnd;
         }
 

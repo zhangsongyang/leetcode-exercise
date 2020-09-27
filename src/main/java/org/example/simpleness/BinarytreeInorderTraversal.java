@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 94. 二叉树的中序遍历
+ * 94. 二叉树的中序遍历（）
  * <p>
  * 给定一个二叉树，返回它的中序 遍历。
  * <p>
@@ -44,6 +44,12 @@ public class BinarytreeInorderTraversal {
         return res;
     }
 
+    /**
+     * 中序遍历
+     *
+     * @param cur
+     * @param res
+     */
     private static void helper(TreeNode cur, List<Integer> res) {
         if (null == cur) {
             return;
@@ -53,15 +59,63 @@ public class BinarytreeInorderTraversal {
         helper(cur.right, res);
     }
 
+    public static List<Integer> inorderTraversalTop(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+
+        helperTop(root, res);
+        return res;
+    }
+
+    /**
+     * 前序遍历
+     *
+     * @param cur
+     * @param res
+     */
+    private static void helperTop(TreeNode cur, List<Integer> res) {
+        if (null == cur) {
+            return;
+        }
+        res.add(cur.val);
+        helperTop(cur.left, res);
+        helperTop(cur.right, res);
+    }
+
+    public static List<Integer> inorderTraversalAfter(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+
+        helperAfter(root, res);
+        return res;
+    }
+
+    /**
+     * 后序遍历
+     *
+     * @param cur
+     * @param res
+     */
+    private static void helperAfter(TreeNode cur, List<Integer> res) {
+        if (null == cur) {
+            return;
+        }
+        helperAfter(cur.left, res);
+        helperAfter(cur.right, res);
+        res.add(cur.val);
+    }
+
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        TreeNode l1 = new TreeNode(2);
-        TreeNode r1 = new TreeNode(3);
-        l1.left = new TreeNode(4);
-        l1.right = new TreeNode(5);
+        TreeNode root = new TreeNode(5);
+        TreeNode l1 = new TreeNode(4);
+        TreeNode r1 = new TreeNode(6);
+        l1.left = new TreeNode(1);
+        l1.right = new TreeNode(2);
+        r1.left = new TreeNode(7);
+        r1.right = new TreeNode(8);
         root.left = l1;
         root.right = r1;
-        System.out.println(inorderTraversal(root));
+        System.out.println("前序遍历:" + inorderTraversalTop(root));
+        System.out.println("中序遍历:" + inorderTraversal(root));
+        System.out.println("后序遍历:" + inorderTraversalAfter(root));
     }
 
 }

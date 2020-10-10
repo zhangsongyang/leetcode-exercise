@@ -79,6 +79,31 @@ public class LinkedListCycleII {
         return null;
     }
 
+    public ListNode detectCycleB(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode slow = head, fast = head;
+        while (fast != null) {
+            slow = slow.next;
+            if (fast.next != null) {
+                fast = fast.next.next;
+            } else {
+                return null;
+            }
+            if (fast == slow) {
+                ListNode ptr = head;
+                while (ptr != slow) {
+                    ptr = ptr.next;
+                    slow = slow.next;
+                }
+                return ptr;
+            }
+        }
+        return null;
+    }
+
+
     public static void main(String[] args) {
         ListNode listNodeA = new ListNode(3);
         ListNode listNodeB = new ListNode(2);

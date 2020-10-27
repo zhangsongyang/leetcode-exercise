@@ -2,6 +2,7 @@ package org.example.medium;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 144. 二叉树的前序遍历
@@ -42,6 +43,29 @@ public class BinaryTreePreorderTraversal {
         }
     }
 
+    /**
+     * 通过栈的方式
+     *
+     * @param head
+     */
+    public static void preOrderIteration(TreeNode head) {
+        if (head == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(head);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            System.out.print(node.val + " ");
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+    }
+
 
     public static List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
@@ -69,6 +93,7 @@ public class BinaryTreePreorderTraversal {
         rightOne.left = leftTwo;
         rightOne.right = null;
         System.out.println(preorderTraversal(root));
+        preOrderIteration(root);
 
     }
 

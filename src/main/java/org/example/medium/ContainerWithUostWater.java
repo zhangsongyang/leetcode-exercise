@@ -24,24 +24,53 @@ package org.example.medium;
  */
 public class ContainerWithUostWater {
 
-    public static int maxArea(int[] height) {
+    public static int maxAreaB(int[] height) {
+        int area = 0;
         int left = 0;
-        int right = height.length - 1;
-        int ans = 0;
-        while (left < right) {
-            int area = Math.min(height[left], height[right]) * (right - left);
-            ans = Math.max(ans, area);
-            if (height[left] < height[right]) {
+        int right = height.length -1;
+        while(left < right){
+            int temp = Math.min(height[left], height[right]) * (right -left);
+            area = Math.max(area, temp);
+            if(height[left] < height[right]){
                 left++;
             } else {
                 right--;
             }
         }
-        return ans;
+        return area;
     }
+
+    public static int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int area = 0;
+        while (left < right) {
+            int areaA = Math.min(height[left], height[right]) * (right - left);
+            area = Math.max(area, areaA);
+            if (height[left] < height[right]) {
+                ++left;
+            } else {
+                --right;
+            }
+        }
+        return area;
+    }
+
+    public static int maxAreaA(int[] height) {
+        int area = 0;
+        for(int i=0; i< height.length; i++){
+            for(int j=i+1; j< height.length; j++){
+                area = Math.max(Math.min(height[i], height[j]) * (j-i), area);
+            }
+        }
+        return area;
+    }
+
 
     public static void main(String[] args) {
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
         System.out.println(maxArea(height));
+        System.out.println(maxAreaA(height));
+        System.out.println(maxAreaB(height));
     }
 }

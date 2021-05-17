@@ -27,8 +27,44 @@ import java.util.List;
  */
 public class GenerateParentheses {
 
+    public static List<String> generateParenthesisTest(int n) {
+        List<String> result = new ArrayList<String>();
+        generateAllTest(new char[2*n], 0, result);
+        return result;
+    }
+
+    public static void generateAllTest(char[] current, int pos, List<String> result) {
+        if (current.length == pos) {
+//            if (validTest(current)) {
+                result.add(new String(current));
+//            }
+        } else {
+            current[pos] = '(';
+            generateAllTest(current, pos + 1, result);
+            current[pos] = ')';
+            generateAllTest(current, pos + 1, result);
+        }
+    }
+
+    private static boolean validTest(char[] current) {
+        int balance = 0;
+        for (char c : current) {
+            if (c == '(') {
+                balance++;
+            } else {
+                balance--;
+            }
+            if (balance < 0) {
+                return false;
+            }
+        }
+        return balance == 0;
+    }
+
+
     public static void main(String[] args) {
-        List<String> list = generateParenthesis(3);
+        List<String> list = generateParenthesis(1);
+//        List<String> list = generateParenthesisTest(1);
         int i =0;
         for (String s : list) {
             System.out.println(s + " " + (++i));

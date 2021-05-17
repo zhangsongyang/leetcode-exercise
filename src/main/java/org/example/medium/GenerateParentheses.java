@@ -35,9 +35,9 @@ public class GenerateParentheses {
 
     public static void generateAllTest(char[] current, int pos, List<String> result) {
         if (current.length == pos) {
-//            if (validTest(current)) {
+            if (validTest(current)) {
                 result.add(new String(current));
-//            }
+            }
         } else {
             current[pos] = '(';
             generateAllTest(current, pos + 1, result);
